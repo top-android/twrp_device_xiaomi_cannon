@@ -1,0 +1,23 @@
+diff --git a/MetadataCrypt.cpp b/MetadataCrypt.cpp
+index bc2e7ea..1aad3ba 100644
+--- a/MetadataCrypt.cpp
++++ b/MetadataCrypt.cpp
+@@ -216,6 +216,18 @@ static const CryptoType& lookup_cipher(const std::string& cipher_name) {
+ }
+ 
+ static bool parse_options(const std::string& options_string, CryptoOptions* options) {
++    // Android 12 及更早的 vendor fstab 只用 fileencryption 的 v2 表示 metadata 加密，
++    // 不带 metadata_encryption 字段。此时按默认 aes-256-xts 继续（不启用 HW-wrapped key），
++    // 否则 Split("") 得到空 cipher，直接失败，表现为 "Unable to decrypt metadata encryption"。
++    if (options_string.empty()) {
++        options->cipher = lookup_cipher("aes-256-xts");
++        if (options->cipher.get_kernel_name() == nullptr) {
++            LOG(ERROR) << "Default metadata cipher aes-256-xts not found";
++            return false;
++        }
++        LOG(INFO) << "Empty metadata_encryption option, falling back to aes-256-xts";
++        return true;
++    }
+     auto parts = android::base::Split(options_string, ":");
+     if (parts.size() < 1 || parts.size() > 2) {
+         LOG(ERROR) << "Invalid metadata encryption option: " << options_string;
