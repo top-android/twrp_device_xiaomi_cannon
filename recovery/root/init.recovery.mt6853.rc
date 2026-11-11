@@ -26,18 +26,18 @@ on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
 
 on property:sys.listeners.registered=true && property:vendor.sys.listeners.registered=true
     start teei_daemon
-    start keymaster-4-1-beanpo
+    start keymaster-4-1-beanpod
     start keymaster_attestation-1-1
-    start vendor.gatekeeper-1-0
+    start gatekeeper-1-0
     start thh-2-0
     start soter-1-0
     start vendor.secure_element
 
 on property:hwservicemanager.ready=true && property:crypto.ready=1
     start teei_daemon
-    start keymaster-4-1-beanpo
+    start keymaster-4-1-beanpod
     start keymaster_attestation-1-1
-    start vendor.gatekeeper-1-0
+    start gatekeeper-1-0
     start thh-2-0
     start soter-1-0
     start vendor.secure_element
@@ -83,7 +83,7 @@ on property:twrp.all.users.decrypted=true
     stop teei_daemon
     stop keymaster-4-1-beanpod
     stop keymaster_attestation-1-1
-    stop vendor.gatekeeper-1-0
+    stop gatekeeper-1-0
     stop thh-2-0
     stop soter-1-0
     stop vendor.secure_element
