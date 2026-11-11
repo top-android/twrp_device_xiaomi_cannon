@@ -8,6 +8,8 @@ on init
 
 on boot
     start health-hal-2-0
+    # 强制拉起 adb（TWRP 默认没设这个 property，导致 recovery 主界面没有 adb 设备）
+    setprop sys.usb.config adb
 
 service keystore_auth /system/bin/keystore_auth
     oneshot
