@@ -2,7 +2,6 @@
     Input:
         manifest.xml
         manifest_displayfeature.xml
-        manifest.xml
         manifest_apuware_apusys.xml
         manifest_apuware_xrp.xml
         manifest_apuware_utils.xml
@@ -179,6 +178,16 @@
         <fqname>@1.0::IMemtrack/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.nfc</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.2::INfc/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.2</version>
@@ -236,6 +245,18 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IDevice/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.secure_element</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ISecureElement</name>
+            <instance>SIM1</instance>
+            <instance>eSE1</instance>
+        </interface>
+        <fqname>@1.0::ISecureElement/SIM1</fqname>
+        <fqname>@1.0::ISecureElement/eSE1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
@@ -619,14 +640,14 @@
         <fqname>@2.0::IThhDevice/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.sla.service</name>
+        <name>vendor.nxp.hardware.nfc</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
-            <name>ISlaService</name>
+            <name>INqNfc</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ISlaService/default</fqname>
+        <fqname>@1.1::INqNfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.citsensorservice</name>
