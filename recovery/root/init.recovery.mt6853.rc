@@ -6,6 +6,7 @@ on init
     mount ext4 /dev/block/platform/bootdevice/by-name/persist /persist
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     setprop ro.hardware.gatekeeper beanpod
+    setprop twrp.skip_boot_prop 1
 
 on fs
     install keyring
