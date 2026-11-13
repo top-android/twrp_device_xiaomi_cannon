@@ -7,6 +7,7 @@ on init
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     setprop ro.hardware.gatekeeper beanpod
     setprop twrp.skip_boot_prop 1
+    setprop ro.product.device cannon
 
 on fs
     install keyring
@@ -20,8 +21,6 @@ on post-fs
 on boot
     start health-hal-2-1
     setprop sys.usb.config adb
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor performance
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     start teei_daemon

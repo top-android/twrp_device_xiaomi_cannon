@@ -26,8 +26,8 @@ $(call inherit-product, device/xiaomi/cannong/device.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := cannong
-PRODUCT_NAME := twrp_cannong
+PRODUCT_DEVICE := cannon
+PRODUCT_NAME := twrp_cannon
 PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := Redmi
 PRODUCT_MANUFACTURER := xiaomi
