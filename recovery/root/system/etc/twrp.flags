@@ -24,4 +24,4 @@
 /vbmeta                   emmc     /dev/block/by-name/vbmeta                         flags=backup=1;display="VBMeta";flashimg=1
 
 /external_sd              vfat     /dev/block/mmcblk0p1         /dev/block/mmcblk0   flags=display="Micro SD Card";storage;wipeingui;removable
-/usb-otg                  vfat     /dev/block/sdd               /dev/block/sdd1      flags=display="USB OTG";storage;wipeingui;removable
+/devices/platform/usb_xhci/usb1/    /usb-otg    auto    defaults    flags=display="USB OTG";storage;wipeingui;removable
