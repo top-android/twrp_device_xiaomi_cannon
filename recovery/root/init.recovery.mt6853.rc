@@ -18,8 +18,20 @@ on post-fs
     class_start early_hal
     exec -- /system/bin/fsverity_init --load-verified-keys
     
-on boot
+service health-hal-2-1 /vendor/bin/hw/android.hardware.health@2.1-service
+    class hal
+    class charger
+    user system
+    group system
+    capabilities WAKE_ALARM BLOCK_SUSPEND
+    file /dev/kmsg w
+    interface android.hardware.health@2.1::IHealth default
+    interface android.hardware.health@2.0::IHealth default
+
+on property:hwservicemanager.ready=true
     start health-hal-2-1
+
+on boot
     setprop sys.usb.config adb
 
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
